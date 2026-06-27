@@ -107,6 +107,17 @@
     hostName = "pihole.pushrax.com";
   };
 
+  virtualisation.oci-containers = {
+    backend = "podman";
+
+    containers.homeassistant = {
+      volumes = [ "home-assistant:/config" ];
+      environment.TZ = time.timeZone;
+      image = "ghcr.io/home-assistant/home-assistant:stable";
+      extraOptions = [ "--network=host" ];
+    };
+  };
+
   security.acme = {
     acceptTerms = true;
     defaults.email = "stuff@pushrax.com";

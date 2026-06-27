@@ -158,7 +158,7 @@
         "/home/michael/hermes.secrets"
       ];
       cmd = [ "gateway" "run" ];
-      ports = [ "127.0.0.1::9119" ];
+      ports = [ "127.0.0.1:9119:9119" ];
       extraOptions = [ "--shm-size=1g" ];
     };
   };

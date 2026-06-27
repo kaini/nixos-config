@@ -76,6 +76,14 @@
     };
   };
 
+  services.pihole-ftl = {
+    enable = true;
+    openFirewallDNS = true;
+    settings = {
+      dns.upstreams = [ "10.0.0.1" ];
+    };
+  };
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

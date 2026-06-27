@@ -82,8 +82,16 @@
     enable = true;
     openFirewallDNS = true;
     settings = {
-      dns.upstreams = [ "10.0.0.1" ];
+      dns.upstreams = [ "10.0.0.1" ];  
     };
+    lists = [
+      {
+        url = "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/pro.txt";
+        type = "block";
+        enabled = true;
+        description = "hagezi blocklist";
+      }
+    ];
   };
 
   # Open ports in the firewall.

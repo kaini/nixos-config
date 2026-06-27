@@ -95,7 +95,7 @@
   };
   services.pihole-web = {
     enable = true;
-    ports = [ "8001" ];
+    ports = [ 8001 ];
   };
 
   # Open ports in the firewall.

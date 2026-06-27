@@ -112,12 +112,12 @@
     defaults.email = "stuff@pushrax.com";
 
     certs."homelab.pushrax.com" = {
+      domain = "*.pushrax.com";
       dnsProvider = "gandi";
       # File contents:
       # GANDI_API_KEY=xxxxxxxx
       environmentFile = "/home/michael/acme.secrets";
       reloadServices = [ "haproxy" ];
-      extraDomainNames = [ "*.pushrax.com" ];
       group = "haproxy";
     };
   };

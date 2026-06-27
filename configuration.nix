@@ -141,7 +141,7 @@
     };
 
     containers.hermes = {
-      volums = [
+      volumes = [
         "/var/lib/hermes:/opt/data"
       ];
       environment = {

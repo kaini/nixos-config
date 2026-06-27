@@ -102,6 +102,7 @@
       dns.hosts = [
         "10.0.0.10 pihole.pushrax.com"
         "10.0.0.10 hass.pushrax.com"
+        "10.0.0.10 hermes.pushrax.com"
       ];
     };
     lists = [
@@ -157,6 +158,7 @@
         "/home/michael/hermes.secrets"
       ];
       cmd = [ "gateway" "run" ];
+      ports = [ "127.0.0.1::9119" ];
       extraOptions = [ "--shm-size=1g" ];
     };
   };

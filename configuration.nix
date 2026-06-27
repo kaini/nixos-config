@@ -18,6 +18,7 @@
 
   networking = {
     hostName = "rebellion";
+    
     interfaces.enp2s0 = {
       ipv4.addresses = [{
         address = "10.0.0.10";
@@ -37,6 +38,11 @@
       interface = "enp2s0";
     };
     nameservers = ["10.0.0.1"];
+
+    firewall = {
+      allowedTCPPorts = [ 80 443 ];
+      allowedUDPPorts = [ 443 ];
+    };
   };
 
   # Select internationalisation properties.
@@ -103,12 +109,6 @@
     config = builtins.readFile ./haproxy.cfg;
   };
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
   #
@@ -129,4 +129,3 @@
   system.stateVersion = "26.05"; # Did you read the comment?
 
 }
-

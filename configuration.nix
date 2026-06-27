@@ -116,7 +116,7 @@
       # GANDI_API_KEY=xxxxxxxx
       environmentFile = "/home/michael/acme.secrets";
       reloadServices = [ "haproxy" ];
-      extraDomainNames = [ "*.pushrax.com", "10.0.0.10", "fd00::1010:1010:1010:1010" ];
+      extraDomainNames = [ "*.pushrax.com" "10.0.0.10" "fd00::1010:1010:1010:1010" ];
     };
   };
 

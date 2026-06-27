@@ -98,6 +98,11 @@
     ports = [ 8001 ];
   };
 
+  services.haproxy = {
+    enable = true;
+    config = builtins.readFile ./haproxy.cfg;
+  };
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

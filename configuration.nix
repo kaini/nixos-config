@@ -88,7 +88,8 @@
     enable = true;
     openFirewallDNS = true;
     settings = {
-      dns.upstreams = [ "10.0.0.1" ];  
+      dns.upstreams = [ "10.0.0.1" ];
+      dns.hosts = [ "10.0.0.10 pihole.pushrax.com" ];
     };
     lists = [
       {
@@ -102,6 +103,7 @@
   services.pihole-web = {
     enable = true;
     ports = [ 8001 ];
+    hostName = "pihole.pushrax.com";
   };
 
   services.haproxy = {

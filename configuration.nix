@@ -94,7 +94,7 @@
     ];
   };
   services.pihole-web = {
-    enabled = true;
+    enable = true;
     ports = [ "8001" ];
   };
 

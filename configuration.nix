@@ -146,14 +146,14 @@
         "/var/lib/hermes:/opt/data"
       ];
       environment = {
-        API_SERVER_ENABLED = "true";
-        API_SERVER_HOST = "0.0.0.0";
-        API_SERVER_CORS_ORIGINS = "*";
         HERMES_DASHBOARD = "1";
       };
       environmentFiles = [
         # File contents:
-        # API_SERVER_KEY=xxxx
+        # API_SERVER_KEY=xxx
+        # HERMES_DASHBOARD_BASIC_AUTH_USERNAME=xxx
+        # HERMES_DASHBOARD_BASIC_AUTH_PASSWORD=xxx
+        # HERMES_DASHBOARD_BASIC_AUTH_SECRET=xxx
         "/home/michael/hermes.secrets"
       ];
       cmd = [ "gateway" "run" ];

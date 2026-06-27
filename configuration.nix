@@ -115,7 +115,10 @@
     backend = "podman";
 
     containers.homeassistant = {
-      volumes = [ "home-assistant:/config" ];
+      volumes = [
+        "/var/lib/hass:/config"
+        "/run/dbus:/run/dbus:ro"
+      ];
       environment.TZ = config.time.timeZone;
       capabilities = {
         NET_RAW = true;
@@ -125,6 +128,7 @@
         "/dev/serial/by-id/usb-ITead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_5266936139b6ed118c46d60ea8669f5d-if00-port0:/dev/serial/by-id/usb-ITead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_5266936139b6ed118c46d60ea8669f5d-if00-port0"
       ];
       image = "ghcr.io/home-assistant/home-assistant:stable";
+      privileged = true;
       extraOptions = [ "--network=host" ];
     };
   };

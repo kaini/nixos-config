@@ -9,8 +9,28 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "rebellion"; # Define your hostname.
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "rebellion";
+    interfaces.enp2s0 = {
+      ipv4.addresses = [{
+        address = "10.0.0.10";
+        prefixLength = "24";
+      }];
+      ipv6.addresses = [{
+        address = "fd00::1010:1010:1010:1010";
+        prefixLength = "64";
+      }];
+    };
+    defaultGateway = {
+      address = "10.0.0.1";
+      interface = "enp2s0";
+    };
+    defaultGateway6 = {
+      address = "fe80::1";
+      interface = "enp2s0";
+    };
+    nameservers = ["10.0.0.1"];
+  };
 
   # Select internationalisation properties.
   time.timeZone = "Europe/Vienna";

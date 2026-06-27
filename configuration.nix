@@ -113,9 +113,9 @@
 
     certs."homelab.pushrax.com" = {
       domain = "*.pushrax.com";
-      dnsProvider = "gandi";
+      dnsProvider = "gandiv5";
       # File contents:
-      # GANDI_API_KEY=xxxxxxxx
+      # GANDIV5_PERSONAL_ACCESS_TOKEN=xxxxxxxx
       environmentFile = "/home/michael/acme.secrets";
       reloadServices = [ "haproxy" ];
       group = "haproxy";

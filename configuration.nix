@@ -63,7 +63,7 @@
 
   environment.systemPackages = [
     pkgs.net-tools
-    pgks.bind
+    pkgs.bind
   ];
   programs.vim.enable = true;
   programs.vim.defaultEditor = true;

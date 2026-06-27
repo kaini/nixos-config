@@ -14,11 +14,11 @@
     interfaces.enp2s0 = {
       ipv4.addresses = [{
         address = "10.0.0.10";
-        prefixLength = "24";
+        prefixLength = 24;
       }];
       ipv6.addresses = [{
         address = "fd00::1010:1010:1010:1010";
-        prefixLength = "64";
+        prefixLength = 64;
       }];
     };
     defaultGateway = {

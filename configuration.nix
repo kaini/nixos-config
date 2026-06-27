@@ -14,6 +14,7 @@
   fileSystems."/var".options = [ "noatime" ];
   fileSystems."/srv".options = [ "noatime" ];
   fileSystems."/nix".options = [ "noatime" ];
+  fileSystems."/boot".options = [ "noatime" ];
 
   networking = {
     hostName = "rebellion";

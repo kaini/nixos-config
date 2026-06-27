@@ -78,6 +78,9 @@
   programs.htop.enable = true;
   programs.git.enable = true;
 
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.allowReboot = true;
+
   systemd.tmpfiles.rules = [
     "d /var/lib/hass 0770 root root -"
   ];

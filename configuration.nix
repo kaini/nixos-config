@@ -141,6 +141,7 @@
     };
 
     containers.hermes = {
+      image = "nousresearch/hermes-agent:latest";
       volumes = [
         "/var/lib/hermes:/opt/data"
       ];

@@ -113,6 +113,10 @@
     containers.homeassistant = {
       volumes = [ "home-assistant:/config" ];
       environment.TZ = config.time.timeZone;
+      capabilities = {
+        NET_RAW = true;
+        NET_ADMIN = true;
+      };
       image = "ghcr.io/home-assistant/home-assistant:stable";
       extraOptions = [ "--network=host" ];
     };

@@ -90,7 +90,10 @@
     openFirewallDNS = true;
     settings = {
       dns.upstreams = [ "10.0.0.1" ];
-      dns.hosts = [ "10.0.0.10 pihole.pushrax.com" ];
+      dns.hosts = [
+        "10.0.0.10 pihole.pushrax.com"
+        "10.0.0.10 hass.pushrax.com"
+      ];
     };
     lists = [
       {

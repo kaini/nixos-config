@@ -61,11 +61,13 @@
     wheelNeedsPassword = false;
   };
 
+  environment.systemPackages = [
+    pkgs.net-tools
+    pgks.bind
+  ];
   programs.vim.enable = true;
   programs.vim.defaultEditor = true;
-
   programs.htop.enable = true;
-
   programs.git.enable = true;
 
   services.openssh = {

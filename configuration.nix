@@ -93,6 +93,10 @@
       }
     ];
   };
+  services.pihole-web = {
+    enabled = true;
+    ports = [ "8001" ];
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

@@ -78,6 +78,10 @@
   programs.htop.enable = true;
   programs.git.enable = true;
 
+  systemd.tmpfiles.rules = [
+    "d /var/lib/hass 0770 root root -"
+  ];
+
   services.openssh = {
     enable = true;
     settings = {

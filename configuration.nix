@@ -106,6 +106,16 @@
     hostName = "pihole.pushrax.com";
   };
 
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "stuff@pushrax.com";
+    certs."*.pushrax.com" = {
+      dnsProvider = "gandi";
+      # File contains: GANDI_API_KEY=xxxxxxxx
+      environmentFile = "/home/michael/acme.secrets";
+    };
+  };
+
   services.haproxy = {
     enable = true;
     config = builtins.readFile ./haproxy.cfg;

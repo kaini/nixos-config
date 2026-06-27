@@ -83,6 +83,7 @@
 
   systemd.tmpfiles.rules = [
     "d /var/lib/hass 0770 root root -"
+    "d /var/lib/hermes 0770 10000 10000 -"
   ];
 
   services.openssh = {
@@ -137,6 +138,25 @@
       image = "ghcr.io/home-assistant/home-assistant:stable";
       privileged = true;
       extraOptions = [ "--network=host" ];
+    };
+
+    containers.hermes = {
+      volums = [
+        "/var/lib/hermes:/opt/data"
+      ];
+      environment = {
+        API_SERVER_ENABLED = "true";
+        API_SERVER_HOST = "0.0.0.0";
+        API_SERVER_CORS_ORIGINS = "*";
+        HERMES_DASHBOARD = "1";
+      };
+      environmentFiles = [
+        # File contents:
+        # API_SERVER_KEY=xxxx
+        "/home/michael/hermes.secrets"
+      ];
+      cmd = [ "gateway" "run" ];
+      extraOptions = [ "--shm-size=1g" ];
     };
   };
 

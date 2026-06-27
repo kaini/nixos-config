@@ -9,6 +9,12 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  fileSystems."/".options = [ "noatime" ];
+  fileSystems."/home".options = [ "noatime" ];
+  fileSystems."/var".options = [ "noatime" ];
+  fileSystems."/srv".options = [ "noatime" ];
+  fileSystems."/nix".options = [ "noatime" ];
+
   networking = {
     hostName = "rebellion";
     interfaces.enp2s0 = {

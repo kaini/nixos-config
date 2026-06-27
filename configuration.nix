@@ -71,6 +71,7 @@
     pkgs.net-tools
     pkgs.bind
     pkgs.openssl
+    pkgs.usbutils
   ];
   programs.vim.enable = true;
   programs.vim.defaultEditor = true;
@@ -120,6 +121,9 @@
         NET_RAW = true;
         NET_ADMIN = true;
       };
+      devices = [
+        "/dev/serial/by-id/usb-ITead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_5266936139b6ed118c46d60ea8669f5d-if00-port0:/dev/ttyUSB0"
+      ]
       image = "ghcr.io/home-assistant/home-assistant:stable";
       extraOptions = [ "--network=host" ];
     };

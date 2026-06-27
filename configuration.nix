@@ -70,6 +70,7 @@
   environment.systemPackages = [
     pkgs.net-tools
     pkgs.bind
+    pkgs.openssl
   ];
   programs.vim.enable = true;
   programs.vim.defaultEditor = true;

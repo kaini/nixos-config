@@ -2,6 +2,7 @@
 # !!! REMOVE ONCE MERGED !!!
 
 {
+  pkgs,
   lib,
   stdenv,
   fetchFromGitHub,

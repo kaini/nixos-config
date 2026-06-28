@@ -21,7 +21,7 @@ let
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "obsidian-headless";
-  version = "0.0.12";
+  version = "0.0.11";
 
   strictDeps = true;
   __structuredAttrs = true;
@@ -29,8 +29,8 @@ stdenv.mkDerivation (finalAttrs: {
   src = fetchFromGitHub {
     owner = "obsidianmd";
     repo = "obsidian-headless";
-    rev = "14dafca";
-    hash = "sha256-RnLiCbAgetMO8pXYNjNW7fPeR8O7/Zz2i/x5OXOL+8U=";
+    tag = finalAttrs.version;
+    hash = "sha256-zjMdOCuOMMvBZhrXf7nkz8sYAQ0vU+TzyHhlwIbEfHU=";
   };
 
   pnpmDeps = fetchPnpmDeps {

@@ -7,10 +7,7 @@
     ./haproxy.nix
     ./pihole.nix
     ./hass.nix
-  ];
-
-  systemd.tmpfiles.rules = [
-    "d /var/lib/hermes 0770 10000 10000 -"
+    ./hermes.nix
   ];
 
   services.postgresql = {
@@ -20,29 +17,6 @@
 
   services.redis.servers.hancho = {
     enable = true;
-  };
-
-  virtualisation.oci-containers = {
-    containers.hermes = {
-      image = "nousresearch/hermes-agent:latest";
-      volumes = [
-        "/var/lib/hermes:/opt/data"
-      ];
-      environment = {
-        HERMES_DASHBOARD = "1";
-      };
-      environmentFiles = [
-        # File contents:
-        # API_SERVER_KEY=xxx
-        # HERMES_DASHBOARD_BASIC_AUTH_USERNAME=xxx
-        # HERMES_DASHBOARD_BASIC_AUTH_PASSWORD=xxx
-        # HERMES_DASHBOARD_BASIC_AUTH_SECRET=xxx
-        "/home/michael/hermes.secrets"
-      ];
-      cmd = [ "gateway" "run" ];
-      ports = [ "127.0.0.1:9119:9119" ];
-      extraOptions = [ "--shm-size=1g" ];
-    };
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,

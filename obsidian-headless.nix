@@ -8,7 +8,7 @@ pkgs.buildNpmPackage {
     owner = "obsidianmd";
     repo = "obsidian-headless";
     rev = "14dafca";
-    hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+    hash = "sha256-5GXO9FVATs8qlO6aQpOOtPYgPAb30lDxjM4VlfEAPCk=";
   };
 
   npmDepsHash = "sha256-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB=";

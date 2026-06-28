@@ -23,5 +23,5 @@
       privileged = true;
       extraOptions = [ "--network=host" ];
     };
-  }
+  };
 }

@@ -123,7 +123,7 @@
   services.postgresql = {
     enable = true;
     extensions = ps: with ps; [ pgvector ];
-  }
+  };
 
   virtualisation.oci-containers = {
     backend = "podman";

@@ -2,7 +2,7 @@
 
 let
   cfg = config.my.http;
-{
+in {
   options.my.http = lib.mkOption {
     type = lib.types.attrsOf (lib.types.submodule ({ port, ... }: {
       options = {

@@ -1,12 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./system.nix
-      ./haproxy.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ./system.nix
+    ./haproxy.nix
+  ];
 
   systemd.tmpfiles.rules = [
     "d /var/lib/hass 0770 root root -"

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   boot.loader.systemd-boot.enable = true;
@@ -33,11 +33,6 @@
       interface = "enp2s0";
     };
     nameservers = ["10.0.0.1"];
-
-    firewall = {
-      allowedTCPPorts = [ 80 443 ];
-      allowedUDPPorts = [ 443 ];
-    };
   };
 
   # Select internationalisation properties.

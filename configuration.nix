@@ -5,38 +5,13 @@
     ./hardware-configuration.nix
     ./base.nix
     ./haproxy.nix
+    ./pihole.nix
+    ./hass.nix
   ];
 
   systemd.tmpfiles.rules = [
-    "d /var/lib/hass 0770 root root -"
     "d /var/lib/hermes 0770 10000 10000 -"
   ];
-
-  services.pihole-ftl = {
-    enable = true;
-    openFirewallDNS = true;
-    settings = {
-      dns.upstreams = [ "10.0.0.1" ];
-      dns.hosts = [
-        "10.0.0.10 pihole.pushrax.com"
-        "10.0.0.10 hass.pushrax.com"
-        "10.0.0.10 hermes.pushrax.com"
-      ];
-    };
-    lists = [
-      {
-        url = "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/pro.txt";
-        type = "block";
-        enabled = true;
-        description = "hagezi blocklist";
-      }
-    ];
-  };
-  services.pihole-web = {
-    enable = true;
-    ports = [ 8001 ];
-    hostName = "pihole.pushrax.com";
-  };
 
   services.postgresql = {
     enable = true;
@@ -48,26 +23,6 @@
   };
 
   virtualisation.oci-containers = {
-    backend = "podman";
-
-    containers.homeassistant = {
-      volumes = [
-        "/var/lib/hass:/config"
-        "/run/dbus:/run/dbus:ro"
-      ];
-      environment.TZ = config.time.timeZone;
-      capabilities = {
-        NET_RAW = true;
-        NET_ADMIN = true;
-      };
-      devices = [
-        "/dev/serial/by-id/usb-ITead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_5266936139b6ed118c46d60ea8669f5d-if00-port0:/dev/serial/by-id/usb-ITead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_5266936139b6ed118c46d60ea8669f5d-if00-port0"
-      ];
-      image = "ghcr.io/home-assistant/home-assistant:stable";
-      privileged = true;
-      extraOptions = [ "--network=host" ];
-    };
-
     containers.hermes = {
       image = "nousresearch/hermes-agent:latest";
       volumes = [

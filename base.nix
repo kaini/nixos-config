@@ -81,4 +81,8 @@
       PermitRootLogin = "no";
     };
   };
+
+  virtualisation.oci-containers = {
+    backend = "podman";
+  }
 }

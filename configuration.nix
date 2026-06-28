@@ -125,6 +125,10 @@
     extensions = ps: with ps; [ pgvector ];
   };
 
+  services.redis.servers.hancho = {
+    enable = true;
+  };
+
   virtualisation.oci-containers = {
     backend = "podman";
 

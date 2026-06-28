@@ -27,4 +27,6 @@
       extraOptions = [ "--shm-size=1g" ];
     };
   };
+
+  my.http.hermes.port = 9119;
 }

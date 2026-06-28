@@ -24,4 +24,6 @@
       extraOptions = [ "--network=host" ];
     };
   };
+
+  my.http.hass.port = 8123;
 }

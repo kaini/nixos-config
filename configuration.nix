@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./system.nix
+    ./base.nix
     ./haproxy.nix
   ];
 

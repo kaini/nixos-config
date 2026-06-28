@@ -67,6 +67,8 @@
     wheelNeedsPassword = false;
   };
 
+  nixpkgs.config.allowUnfree = true;
+  
   environment.systemPackages = [
     pkgs.net-tools
     pkgs.bind

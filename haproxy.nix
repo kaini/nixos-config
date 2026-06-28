@@ -64,7 +64,7 @@ in {
             compression algo gzip
             compression direction both
 
-            ${lib.mapAttrs {name: value: "use_backend ${name} if { req.hdr(host) -i ${name}.pushrax.com }"} cfg}
+            ${lib.mapAttrs (name: value: "use_backend ${name} if { req.hdr(host) -i ${name}.pushrax.com }") cfg}
       ''
     };
 

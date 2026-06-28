@@ -65,6 +65,16 @@ in {
             compression direction both
 
             ${lib.concatMapAttrsStringSep "\n    " (name: value: "use_backend ${name} if { req.hdr(host) -i ${name}.pushrax.com }") cfg}
+        
+        ${
+          lib.concatMapAttrsStringSep
+            "\n"
+            (name: value: ''
+              backend ${name}
+                  server ${name}1 127.0.0.1:${value.port} check
+            '')
+            cfg
+        }
       '';
     };
 

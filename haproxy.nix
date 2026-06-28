@@ -71,7 +71,7 @@ in {
             "\n"
             (name: value: ''
               backend ${name}
-                  server ${name}1 127.0.0.1:${value.port} check
+                  server ${name}1 127.0.0.1:${toString value.port} check
             '')
             cfg
         }

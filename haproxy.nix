@@ -82,5 +82,7 @@ in {
       allowedTCPPorts = [ 80 443 ];
       allowedUDPPorts = [ 443 ];
     };
+
+    services.pihole-ftl.settings.dns.hosts = lib.mapAttrsToList (name: value: "10.0.0.10 ${name}.pushrax.com") cfg;
   };
 }

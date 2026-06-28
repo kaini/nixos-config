@@ -2,7 +2,7 @@
 # !!! REMOVE ONCE MERGED !!!
 
 {
-  pkgs,
+  pkgs ? import <nixpkgs> {},
   lib,
   stdenv,
   fetchFromGitHub,

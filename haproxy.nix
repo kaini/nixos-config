@@ -1,6 +1,19 @@
 { config, lib, pkgs, ... }:
 
-{ 
+let
+  cfg = config.my.http;
+{
+  options.my.http = lib.mkOption {
+    type = lib.types.attrsOf (lib.types.submodule ({ port, ... }: {
+      options = {
+        port = lib.mkOption {
+          type = lib.types.port;
+        }
+      }
+    }));
+    default = {};
+  };
+
   security.acme = {
     acceptTerms = true;
     defaults.email = "stuff@pushrax.com";

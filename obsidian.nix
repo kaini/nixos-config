@@ -8,7 +8,7 @@
   
   virtualisation.oci-containers = {
     containers.obsidian-headless = {
-      image = "ghcr.io/belphemur/obsidian-headless-sync-docker:latest";
+      image = "ghcr.io/belphemur/obsidian-headless-sync-docker:0.0.12";
       volumes = [
         "/var/lib/obsidian-vault:/vault"
         "/var/lib/obsidian-config:/home/obsidian/.config"
@@ -25,9 +25,6 @@
         # VAULT_PASSWORD=xxx
         "/home/michael/obsidian.secrets"
       ];
-      cmd = [ "gateway" "run" ];
-      ports = [ "127.0.0.1:9119:9119" ];
-      extraOptions = [ "--shm-size=1g" ];
     };
   };
 }

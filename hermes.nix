@@ -10,6 +10,7 @@
       image = "nousresearch/hermes-agent:latest";
       volumes = [
         "/var/lib/hermes:/opt/data"
+        "/var/lib/obsidian-vault:/mnt/obsidian-vault"
       ];
       environment = {
         HERMES_DASHBOARD = "1";

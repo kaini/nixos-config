@@ -65,6 +65,7 @@
     pkgs.openssl
     pkgs.usbutils
     pkgs.file
+    pkgs.tree
   ];
   programs.vim.enable = true;
   programs.vim.defaultEditor = true;

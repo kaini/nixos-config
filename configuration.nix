@@ -8,6 +8,7 @@
     ./pihole.nix
     ./hass.nix
     ./hermes.nix
+    ./obsidian.nix
   ];
 
   services.postgresql = {

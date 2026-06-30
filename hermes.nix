@@ -14,7 +14,7 @@
         HOME = "/home/hindsight";
         HINDSIGHT_API_WORKER_ID = "hindsight";
         HINDSIGHT_API_LLM_PROVIDER = "openai-codex";
-        HINDSIGHT_API_TENANT_EXTENSION = "hindsight_api.extensions.builtin.tenant:ApiKeyTenantExtension"
+        HINDSIGHT_API_TENANT_EXTENSION = "hindsight_api.extensions.builtin.tenant:ApiKeyTenantExtension";
       };
       environmentFiles = [
         # File contents:

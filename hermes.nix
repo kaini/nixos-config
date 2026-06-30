@@ -3,14 +3,13 @@
 {
   systemd.tmpfiles.rules = [
     "d /var/lib/hermes 0770 10000 10000 -"
-    "d /var/lib/hindsight-data 0770 10001 10001 -"
-    "d /var/lib/hindsight-codex-auth 0770 10001 10001 -"
+    "d /var/lib/hindsight-data 0770 1000 1000 -"
+    "d /var/lib/hindsight-codex-auth 0770 1000 1000 -"
   ];
   
   virtualisation.oci-containers = {
     containers.hindsight = {
       image = "ghcr.io/vectorize-io/hindsight:latest";
-      user = "10001:10001";
       environment = {
         HOME = "/home/hindsight";
         HINDSIGHT_API_WORKER_ID = "hindsight";

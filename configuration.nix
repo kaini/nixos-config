@@ -9,7 +9,6 @@
     ./hass.nix
     ./hermes.nix
     ./obsidian.nix
-    ./postgresql.nix
   ];
 
   # This option defines the first version of NixOS you have installed on this particular machine,

@@ -7,6 +7,7 @@
     settings = {
       dns.upstreams = [ "10.0.0.1" ];
       dns.interface = "enp2s0";
+      dns.listeningMode = "BIND";
     };
     lists = [
       {

@@ -4,6 +4,10 @@
   systemd.tmpfiles.rules = [
     "d /var/lib/hermes 0770 10000 10000 -"
   ];
+
+  services.redis.servers.honcho = {
+    enable = true;
+  };
   
   virtualisation.oci-containers = {
     containers.hermes = {

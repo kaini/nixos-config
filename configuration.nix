@@ -9,16 +9,8 @@
     ./hass.nix
     ./hermes.nix
     ./obsidian.nix
+    ./postgresql.nix
   ];
-
-  services.postgresql = {
-    enable = true;
-    extensions = ps: with ps; [ pgvector ];
-  };
-
-  services.redis.servers.hancho = {
-    enable = true;
-  };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

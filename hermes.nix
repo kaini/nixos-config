@@ -4,6 +4,7 @@
   systemd.tmpfiles.rules = [
     "d /var/lib/hermes 0770 10000 10000 -"
     "d /var/lib/hindsight-data 0770 10001 10001 -"
+    "d /var/lib/hindsight-codex-auth 0770 10001 10001 -"
   ];
   
   virtualisation.oci-containers = {
@@ -17,6 +18,7 @@
       };
       volumes = [
         "/var/lib/hindsight-data:/home/hindsight/.pg0"
+        "/var/lib/hindsight-codex-auth:/home/hindsight/.codex"
       ];
       ports = [
         "127.0.0.1:8888:8888"

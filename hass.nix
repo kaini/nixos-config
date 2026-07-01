@@ -28,7 +28,7 @@
   my.http.hass.port = 8123;
 
   networking.firewall = {
-    allowedTCPPorts = [ 80 443 ];
+    allowedTCPPorts = [ 80 443 18555 ];
     allowedUDPPorts = [ 1900 5353 ];
   };
 }

@@ -7,6 +7,20 @@
     "d /var/lib/hindsight-codex-auth 0770 1000 1000 -"
   ];
   
+  services.searx = {
+    enabled = true;
+    environmentFiles = [
+      # File contents:
+      # SEARX_SECRET_KEY=
+      "/home/michael/searx.secrets"
+    ];
+    settings = {
+      server.port = 8844;
+      server.bind_address = "127.0.0.1";
+      server.secret_key = "$SEARX_SECRET_KEY";
+    };
+  };
+
   virtualisation.oci-containers = {
     containers.hindsight = {
       image = "ghcr.io/vectorize-io/hindsight:latest";

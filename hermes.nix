@@ -8,12 +8,10 @@
   ];
   
   services.searx = {
-    enabled = true;
-    environmentFiles = [
-      # File contents:
-      # SEARX_SECRET_KEY=
-      "/home/michael/searx.secrets"
-    ];
+    enable = true;
+    # File contents:
+    # SEARX_SECRET_KEY=
+    environmentFile = "/home/michael/searx.secrets";
     settings = {
       server.port = 8844;
       server.bind_address = "127.0.0.1";

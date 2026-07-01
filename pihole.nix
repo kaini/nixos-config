@@ -11,6 +11,7 @@
       ntp.ipv4.active = false;
       ntp.ipv6.active = false;
       ntp.sync.active = false;
+      webserver.port = "127.0.0.1:8001";
     };
     lists = [
       {

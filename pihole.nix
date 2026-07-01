@@ -11,7 +11,6 @@
       ntp.ipv4.active = false;
       ntp.ipv6.active = false;
       ntp.sync.active = false;
-      webserver.port = "127.0.0.1:8001";
     };
     lists = [
       {
@@ -25,7 +24,7 @@
 
   services.pihole-web = {
     enable = true;
-    ports = [ 8001 ];
+    ports = [ "127.0.0.1:8001" ];
     hostName = "pihole.pushrax.com";
   };
 

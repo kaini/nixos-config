@@ -8,7 +8,7 @@
   
   virtualisation.oci-containers = {
     containers.obsidian-headless = {
-      image = "ghcr.io/belphemur/obsidian-headless-sync-docker:0.0.11";
+      image = "ghcr.io/belphemur/obsidian-headless-sync-docker:0.0.11@sha256:3e32972e89c5b592d2f1d08d004d6fb9ea33414330fbc2941500c5723a8a0391";
       volumes = [
         "/var/lib/obsidian-vault:/vault"
         "/var/lib/obsidian-config:/home/obsidian/.config"

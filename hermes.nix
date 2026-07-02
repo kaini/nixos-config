@@ -22,7 +22,7 @@
 
   virtualisation.oci-containers = {
     containers.hindsight = {
-      image = "ghcr.io/vectorize-io/hindsight:0.8.3";
+      image = "ghcr.io/vectorize-io/hindsight:0.8.3@sha256:274704505b2720ac9a5c816c559044c1e8c6b51d47017317ae049ed2952f5ab1";
       environment = {
         HOME = "/home/hindsight";
         HINDSIGHT_API_WORKER_ID = "hindsight";
@@ -47,7 +47,7 @@
     };
 
     containers.hermes = {
-      image = "nousresearch/hermes-agent:v2026.6.5";
+      image = "nousresearch/hermes-agent:v2026.6.5@sha256:9ad3b04ec916ea2c2da22358fd43b024c788d74073210695af88bfc2e63869b4";
       volumes = [
         "/var/lib/hermes:/opt/data"
         "/var/lib/obsidian-vault:/mnt/obsidian-vault"

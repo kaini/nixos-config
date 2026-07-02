@@ -2,6 +2,11 @@
 
 {
   imports = [
+    "${builtins.fetchTarball {
+      url = "https://github.com/ryantm/agenix/archive/b027ee2.tar.gz";
+      sha256 = "1wlpvpj45qfixdzhmk2cgiwlkyaf8a5mjy2jp5lsx2wsxblclngm";
+    }}/modules/age.nix"
+
     ./hardware-configuration.nix
     ./base.nix
     ./haproxy.nix
@@ -9,11 +14,6 @@
     ./hass.nix
     ./hermes.nix
     ./obsidian.nix
-
-    "${builtins.fetchTarball {
-      url = "https://github.com/ryantm/agenix/archive/b027ee2.tar.gz";
-      sha256 = "1wlpvpj45qfixdzhmk2cgiwlkyaf8a5mjy2jp5lsx2wsxblclngm";
-    }}/modules/age.nix"
   ];
 
   # This option defines the first version of NixOS you have installed on this particular machine,
@@ -34,5 +34,4 @@
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "26.05"; # Did you read the comment?
-
 }

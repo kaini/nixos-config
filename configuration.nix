@@ -9,6 +9,11 @@
     ./hass.nix
     ./hermes.nix
     ./obsidian.nix
+
+    "${builtins.fetchTarball {
+      url = "https://github.com/ryantm/agenix/archive/b027ee2.tar.gz";
+      sha256 = "";
+    }}/modules/age.nix"
   ];
 
   # This option defines the first version of NixOS you have installed on this particular machine,

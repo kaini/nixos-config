@@ -25,13 +25,6 @@
         "docker"
       ],
       "pinDigests": true
-    },
-    {
-      "description": "Require explicit Docker tags instead of floating aliases",
-      "matchDatasources": [
-        "docker"
-      ],
-      "allowedVersions": "/^(?!latest$|stable$).+$/"
     }
   ]
 }

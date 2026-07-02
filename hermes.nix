@@ -22,7 +22,7 @@
 
   virtualisation.oci-containers = {
     containers.hindsight = {
-      image = "ghcr.io/vectorize-io/hindsight:0.8.3@sha256:274704505b2720ac9a5c816c559044c1e8c6b51d47017317ae049ed2952f5ab1";
+      image = "ghcr.io/vectorize-io/hindsight:0.8.4@sha256:2c60f233eaba8f51db31adb920a560735aaf6f314e4b63c36c73159742dfa1a7";
       environment = {
         HOME = "/home/hindsight";
         HINDSIGHT_API_WORKER_ID = "hindsight";

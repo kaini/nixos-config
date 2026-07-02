@@ -1,0 +1,30 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Update Docker images used by NixOS oci-containers",
+      "managerFilePatterns": [
+        "/\\.nix$/"
+      ],
+      "matchStrings": [
+        "image\\s*=\\s*\"(?<depName>[a-zA-Z0-9][a-zA-Z0-9._/-]*(?::[0-9]+)?(?:/[a-zA-Z0-9._/-]+)*):(?<currentValue>[^\"@\\s]+)(?:@(?<currentDigest>sha256:[a-f0-9]{64}))?\""
+      ],
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "docker",
+      "autoReplaceStringTemplate": "image = \"{{{depName}}}:{{#if newValue}}{{{newValue}}}{{else}}{{{currentValue}}}{{/if}}{{#if newDigest}}@{{{newDigest}}}{{/if}}\""
+    }
+  ],
+  "packageRules": [
+    {
+      "description": "Pin Docker images to immutable sha256 digests",
+      "matchDatasources": [
+        "docker"
+      ],
+      "pinDigests": true
+    }
+  ]
+}

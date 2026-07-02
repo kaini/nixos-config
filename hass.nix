@@ -19,7 +19,7 @@
       devices = [
         "/dev/serial/by-id/usb-ITead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_5266936139b6ed118c46d60ea8669f5d-if00-port0:/dev/serial/by-id/usb-ITead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_5266936139b6ed118c46d60ea8669f5d-if00-port0"
       ];
-      image = "ghcr.io/home-assistant/home-assistant:2026.6.4";
+      image = "ghcr.io/home-assistant/home-assistant:2026.6.4@sha256:adb3341e31e03e0048e60d8c1cf952e118a381ae258bb921d3da12a3b27bf0c2";
       privileged = true;
       extraOptions = [ "--network=host" ];
     };

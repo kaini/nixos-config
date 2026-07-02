@@ -12,7 +12,7 @@
 
     "${builtins.fetchTarball {
       url = "https://github.com/ryantm/agenix/archive/b027ee2.tar.gz";
-      sha256 = "";
+      sha256 = "1wlpvpj45qfixdzhmk2cgiwlkyaf8a5mjy2jp5lsx2wsxblclngm";
     }}/modules/age.nix"
   ];
 

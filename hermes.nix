@@ -47,7 +47,7 @@
     };
 
     containers.hermes = {
-      image = "nousresearch/hermes-agent:v2026.6.5@sha256:9ad3b04ec916ea2c2da22358fd43b024c788d74073210695af88bfc2e63869b4";
+      image = "nousresearch/hermes-agent:v2026.7.1@sha256:b6c019227889e6675424a2b6223b2cafdd36bf7d1048d1ddd8e043b880d6cc0f";
       volumes = [
         "/var/lib/hermes:/opt/data"
         "/var/lib/obsidian-vault:/mnt/obsidian-vault"

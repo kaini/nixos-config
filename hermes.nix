@@ -71,4 +71,6 @@
 
   my.http.hermes.port = 9119;
   my.http.hindsight.port = 9999;
+
+  networking.firewall.interfaces."podman0".allowedTCPPorts = [ 8844 ];
 }

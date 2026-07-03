@@ -7,11 +7,27 @@
     "d /var/lib/hindsight-codex-auth 0770 1000 1000 -"
   ];
   
+  sops.secrets."hermes.env" = {
+    sopsFile = ./secrets/hermes.env;
+    format = "dotenv";
+    restartUnits = [ "podman-hermes.service" ];
+  };
+
+  sops.secrets."hindsight.env" = {
+    sopsFile = ./secrets/hindsight.env;
+    format = "dotenv";
+    restartUnits = [ "podman-hindsight.service" ];
+  };
+
+  sops.secrets."searx.env" = {
+    sopsFile = ./secrets/searx.env;
+    format = "dotenv";
+    restartUnits = [ "searx-init.service" "searx.service" ];
+  };
+
   services.searx = {
     enable = true;
-    # File contents:
-    # SEARX_SECRET_KEY=
-    environmentFile = "/home/michael/searx.secrets";
+    environmentFile = config.sops.secrets."searx.env".path;
     settings = {
       server.port = 8844;
       server.bind_address = "10.88.0.1";
@@ -29,13 +45,7 @@
         HINDSIGHT_API_LLM_PROVIDER = "openai-codex";
         HINDSIGHT_API_TENANT_EXTENSION = "hindsight_api.extensions.builtin.tenant:ApiKeyTenantExtension";
       };
-      environmentFiles = [
-        # File contents:
-        # HINDSIGHT_API_TENANT_API_KEY=
-        # HINDSIGHT_CP_DATAPLANE_API_KEY=
-        # HINDSIGHT_CP_ACCESS_KEY=
-        "/home/michael/hindsight.secrets"
-      ];
+      environmentFiles = [ config.sops.secrets."hindsight.env".path ];
       volumes = [
         "/var/lib/hindsight-data:/home/hindsight/.pg0"
         "/var/lib/hindsight-codex-auth:/home/hindsight/.codex"
@@ -55,14 +65,7 @@
       environment = {
         HERMES_DASHBOARD = "1";
       };
-      environmentFiles = [
-        # File contents:
-        # API_SERVER_KEY=xxx
-        # HERMES_DASHBOARD_BASIC_AUTH_USERNAME=xxx
-        # HERMES_DASHBOARD_BASIC_AUTH_PASSWORD=xxx
-        # HERMES_DASHBOARD_BASIC_AUTH_SECRET=xxx
-        "/home/michael/hermes.secrets"
-      ];
+      environmentFiles = [ config.sops.secrets."hermes.env".path ];
       cmd = [ "gateway" "run" ];
       ports = [ "127.0.0.1:9119:9119" ];
       extraOptions = [ "--shm-size=1g" ];

@@ -15,6 +15,11 @@ in {
   };
 
   config = {
+    sops.secrets."acme.env" = {
+      sopsFile = ./secrets/acme.env;
+      format = "dotenv";
+    };
+
     security.acme = {
       acceptTerms = true;
       defaults.email = "stuff@pushrax.com";
@@ -22,9 +27,7 @@ in {
       certs."homelab.pushrax.com" = {
         domain = "*.pushrax.com";
         dnsProvider = "gandiv5";
-        # File contents:
-        # GANDIV5_PERSONAL_ACCESS_TOKEN=xxxxxxxx
-        environmentFile = "/home/michael/acme.secrets";
+        environmentFile = config.sops.secrets."acme.env".path;
         reloadServices = [ "haproxy" ];
         group = "haproxy";
       };

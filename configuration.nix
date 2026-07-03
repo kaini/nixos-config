@@ -2,6 +2,11 @@
 
 {
   imports = [
+    "${builtins.fetchTarball {
+      url = "https://github.com/Mic92/sops-nix/archive/56b24064fdcaedca53553b1a6d607fd23b613a24.tar.gz";
+      sha256 = "1f0j45mxb2zv672icpfvi7vnz8l4ccgxlkg79jca8avg00lj9gz3";
+    }}/modules/sops"
+
     ./hardware-configuration.nix
     ./base.nix
     ./haproxy.nix

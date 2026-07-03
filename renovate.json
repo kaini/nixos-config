@@ -17,6 +17,20 @@
       "datasourceTemplate": "docker",
       "versioningTemplate": "docker",
       "autoReplaceStringTemplate": "image = \"{{{depName}}}:{{#if newValue}}{{{newValue}}}{{else}}{{{currentValue}}}{{/if}}{{#if newDigest}}@{{{newDigest}}}{{/if}}\""
+    },
+    {
+      "customType": "regex",
+      "description": "Update sops-nix fetchTarball commit pin",
+      "managerFilePatterns": [
+        "/(^|/)configuration\\.nix$/"
+      ],
+      "matchStrings": [
+        "https://github\\.com/Mic92/sops-nix/archive/(?<currentDigest>[a-f0-9]{40})\\.tar\\.gz"
+      ],
+      "currentValueTemplate": "master",
+      "depNameTemplate": "sops-nix",
+      "packageNameTemplate": "https://github.com/Mic92/sops-nix",
+      "datasourceTemplate": "git-refs"
     }
   ],
   "packageRules": [

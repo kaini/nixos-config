@@ -19,23 +19,6 @@
     restartUnits = [ "podman-hindsight.service" ];
   };
 
-  sops.secrets."searx.env" = {
-    sopsFile = ./secrets/searx.env;
-    format = "dotenv";
-    restartUnits = [ "searx-init.service" "searx.service" ];
-  };
-
-  services.searx = {
-    enable = true;
-    environmentFile = config.sops.secrets."searx.env".path;
-    settings = {
-      server.port = 8844;
-      server.bind_address = "10.88.0.1";
-      server.secret_key = "$SEARX_SECRET_KEY";
-      search.formats = [ "json" "html" ];
-    };
-  };
-
   virtualisation.oci-containers = {
     containers.hindsight = {
       image = "ghcr.io/vectorize-io/hindsight:0.8.4@sha256:2c60f233eaba8f51db31adb920a560735aaf6f314e4b63c36c73159742dfa1a7";
@@ -74,6 +57,4 @@
 
   my.http.hermes.port = 9119;
   my.http.hindsight.port = 9999;
-
-  networking.firewall.interfaces."podman0".allowedTCPPorts = [ 8844 ];
 }

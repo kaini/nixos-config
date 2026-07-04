@@ -1,5 +1,8 @@
 { config, lib, pkgs, ... }:
 
+let
+  rohlik-mcp = pkgs.callPackage ./rohlik-mcp {};
+in
 {
   systemd.tmpfiles.rules = [
     "d /var/lib/hermes 0770 10000 10000 -"
@@ -18,6 +21,42 @@
     format = "dotenv";
     restartUnits = [ "podman-hindsight.service" ];
   };
+
+  sops.secrets."rohlik-mcp.env" = {
+    sopsFile = ./secrets/rohlik-mcp.env;
+    format = "dotenv";
+    restartUnits = [ "rohlik-mcp.service" ];
+  };
+
+  users.groups.rhlmcp = {};
+
+  users.users.rhlmcp = {
+    isSystemUser = true;
+    group = "rhlmcp";
+  };
+
+  systemd.services.rohlik-mcp = {
+    description = "Rohlik MCP";
+    after = [ "network.target" ];
+    wants = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      User = "rhlmcp";
+      Group = "rhlmcp";
+      Type = "simple";
+      ExecStart = "${rohlik-mcp}/bin/rohlik-mcp";
+      Restart = "always";
+      RestartSec = 5;
+      Environment = [
+        "ROHLIK_BASE_URL=https://www.gurkerl.at"
+        "ROHLIK_MCP_HOST=10.88.0.1"
+        "ROHLIK_MCP_PORT=8787"
+      ];
+      EnvironmentFile = config.sops.secrets."rohlik-mcp.env".path;
+    };
+  };
+  
+  networking.firewall.interfaces."podman0".allowedTCPPorts = [ 8787 ];
 
   virtualisation.oci-containers = {
     containers.hindsight = {

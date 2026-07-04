@@ -10,7 +10,12 @@
   fileSystems."/srv".options = [ "noatime" ];
   fileSystems."/nix".options = [ "noatime" ];
   fileSystems."/boot".options = [ "noatime" ];
-
+  fileSystems."/mnt/btr_pool" = {
+    device = "/dev/disk/by-uuid/b8335a66-f76b-47a3-908a-a132f3df68bb";
+    fsType = "btrfs";
+    options = [ "subvolid=5" "noatime" ];
+  };
+  
   networking = {
     hostName = "rebellion";
     

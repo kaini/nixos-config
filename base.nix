@@ -61,11 +61,13 @@
 
   environment.systemPackages = [
     pkgs.net-tools
-    pkgs.bind
+    pkgs.dnslookup
     pkgs.openssl
     pkgs.usbutils
     pkgs.file
     pkgs.tree
+    pkgs.wget
+    pkgs.lsof
   ];
   programs.vim.enable = true;
   programs.vim.defaultEditor = true;

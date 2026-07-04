@@ -1,32 +1,56 @@
 { config, lib, pkgs, ... }:
 
-{
-  systemd.tmpfiles.rules = [
-    "d /var/lib/obsidian-vault 0770 10000 10000 -"
-    "d /var/lib/obsidian-config 0770 10000 10000 -"
-  ];
+let
+  obsidian-headless = pkgs.callPackage ./obsidian-headless/obsidian-headless.nix {};
 
-  sops.secrets."obsidian.env" = {
-    sopsFile = ./secrets/obsidian.env;
-    format = "dotenv";
-    restartUnits = [ "podman-obsidian-headless.service" ];
+  check-login-sh = pkgs.writeShellApplication {
+    name = "check-obsidian-headless-login";
+    runtimeInputs = [ obsidian-headless pkgs.coreutils pkgs.which ];
+    text = ''
+      LOGIN="$(ob login < /dev/null || true)"
+      echo "$LOGIN"
+      if [[ "$LOGIN" != "Logged in as"* ]]; then
+        echo "Not logged in to Obsidian. Please run"
+        echo "  sudo -u $(whoami) $(which ob) login"
+        echo "to authenticate."
+        exit 1
+      fi
+    '';
   };
 
-  virtualisation.oci-containers = {
-    containers.obsidian-headless = {
-      image = "ghcr.io/belphemur/obsidian-headless-sync-docker:0.0.12@sha256:c9c7928e796111077b7e6ca23483cd25b6df11ac8d7243ea17b3c6a6b09f7ef6";
-      volumes = [
-        "/var/lib/obsidian-vault:/vault"
-        "/var/lib/obsidian-config:/home/obsidian/.config"
-      ];
-      environment = {
-        PUID = "10000";
-        PGID = "10000";
-        EXCLUDED_FOLDERS = "";
-      };
-      environmentFiles = [
-        config.sops.secrets."obsidian.env".path
-      ];
+  vault-dir = "/var/lib/obsidian-vault";
+  vault-config = "/var/lib/obsidian-config";
+in
+{
+  systemd.tmpfiles.rules = [
+    "d ${vault-dir} 0770 10000 10000 -"
+    "d ${vault-config} 0770 10000 10000 -"
+  ];
+
+  users.groups.obsidian = {
+    gid = 10000;
+  };
+
+  users.users.obsidian = {
+    isSystemUser = true;
+    uid = 10000;
+    group = "obsidian";
+    home = vault-config;
+  };
+
+  systemd.services.obsidian-headless = {
+    description = "obsidian-headless sync";
+    after = [ "network.target" ];
+    wants = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      User = "obsidian";
+      Group = "obsidian";
+      Type = "simple";
+      ExecStartPre = "${check-login-sh}/bin/check-obsidian-headless-login";
+      ExecStart = "${obsidian-headless}/bin/ob sync --path ${vault-dir} --continuous";
+      Restart = "always";
+      RestartSec = 5;
     };
   };
 }

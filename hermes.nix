@@ -46,9 +46,19 @@ lib.mkMerge [
   {
     # Hindsight
     systemd.tmpfiles.rules = [
-      "d /var/lib/hindsight-data 0770 1000 1000 -"
-      "d /var/lib/hindsight-codex-auth 0770 1000 1000 -"
+      "d /var/lib/hindsight-data 0770 801 801 -"
+      "d /var/lib/hindsight-codex-auth 0770 801 801 -"
     ];
+
+    users.groups.hindsight = {
+      gid = 801;
+    };
+
+    users.users.hindsight = {
+      isSystemUser = true;
+      uid = 801;
+      group = "hindsight";
+    };
 
     sops.secrets."hindsight.env" = {
       sopsFile = ./secrets/hindsight.env;
@@ -72,6 +82,12 @@ lib.mkMerge [
       ports = [
         "127.0.0.1:8888:8888"
         "127.0.0.1:9999:9999"
+      ];
+      extraOptions = [
+        "--uidmap=0:0:1"
+        "--uidmap=1000:801:1"
+        "--gidmap=0:0:1"
+        "--gidmap=1000:801:1"
       ];
     };
 

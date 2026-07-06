@@ -81,8 +81,18 @@ lib.mkMerge [
   {
     # Hermes
     systemd.tmpfiles.rules = [
-      "d /var/lib/hermes 0770 10000 10000 -"
+      "d /var/lib/hermes 0770 ${toString config.users.users.hermes.uid} ${toString config.users.groups.hermes.gid} -"
     ];
+
+    users.groups.hermes = {
+      gid = 800;
+    };
+
+    users.users.hermes = {
+      isSystemUser = true;
+      uid = 800;
+      group = "hermes";
+    };
 
     sops.secrets."hermes.env" = {
       sopsFile = ./secrets/hermes.env;
@@ -90,11 +100,20 @@ lib.mkMerge [
       restartUnits = [ "podman-hermes.service" ];
     };
 
+    fileSystems."/mnt/hermes-obsidian-vault" = {
+      device = "/var/lib/obsidian-vault";
+      fsType = "none";
+      options = [
+        "bind"
+        "X-mount.idmap=u:${toString config.users.users.obsidian.uid}:${toString config.users.users.hermes.uid}:1 g:${toString config.users.groups.obsidian.gid}:${toString config.users.groups.hermes.gid}:1"
+      ];
+    };
+
     virtualisation.oci-containers.containers.hermes = {
       image = "nousresearch/hermes-agent:v2026.7.1@sha256:b6c019227889e6675424a2b6223b2cafdd36bf7d1048d1ddd8e043b880d6cc0f";
       volumes = [
         "/var/lib/hermes:/opt/data"
-        "/var/lib/obsidian-vault:/mnt/obsidian-vault"
+        "/mnt/hermes-obsidian-vault:/mnt/obsidian-vault"
       ];
       environment = {
         HERMES_DASHBOARD = "1";
@@ -102,7 +121,13 @@ lib.mkMerge [
       environmentFiles = [ config.sops.secrets."hermes.env".path ];
       cmd = [ "gateway" "run" ];
       ports = [ "127.0.0.1:9119:9119" ];
-      extraOptions = [ "--shm-size=1g" ];
+      extraOptions = [
+        "--shm-size=1g"
+        "--uidmap=0:0:1"
+        "--uidmap=10000:${toString config.users.users.hermes.uid}:1"
+        "--gidmap=0:0:1"
+        "--gidmap=10000:${toString config.users.groups.hermes.gid}:1"
+      ];
     };
 
     my.http.hermes.port = 9119;

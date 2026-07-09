@@ -25,7 +25,7 @@
         "/(^|/)configuration\\.nix$/"
       ],
       "matchStrings": [
-        "(?<urlPrefix>https://github\\.com/Mic92/sops-nix/archive/)(?<currentDigest>[a-f0-9]{40})(?<hashPrefix>\\.tar\\.gz\\\";[\\s\\S]*?sha256\\s*=\\s*\\\")[^\\\"]+(?<hashSuffix>\\\";)"
+        "(?<urlPrefix>https://github\\.com/Mic92/sops-nix/archive/)(?<currentDigest>[a-f0-9]{40})(?<hashPrefix>\\.tar\\.gz\\\";[\\s\\S]*?sha256\\s*=\\s*\\\")[^\\\"]*(?<hashSuffix>\\\";)"
       ],
       "currentValueTemplate": "master",
       "depNameTemplate": "sops-nix",
@@ -40,7 +40,7 @@
         "/(^|/)rohlik-mcp/default\\.nix$/"
       ],
       "matchStrings": [
-        "(?<versionPrefix>version\\s*=\\s*\\\")(?<currentValue>[^\\\"]+)(?<hashPrefix>\\\";[\\s\\S]*?hash\\s*=\\s*\\\")[^\\\"]+(?<hashSuffix>\\\";)"
+        "(?<versionPrefix>version\\s*=\\s*\\\")(?<currentValue>[^\\\"]+)(?<hashPrefix>\\\";[\\s\\S]*?hash\\s*=\\s*\\\")[^\\\"]*(?<hashSuffix>\\\";)"
       ],
       "depNameTemplate": "dvejsada/rohlik-mcp",
       "datasourceTemplate": "github-tags",
@@ -54,7 +54,7 @@
         "/(^|/)rohlik-api/default\\.nix$/"
       ],
       "matchStrings": [
-        "(?<versionPrefix>version\\s*=\\s*\\\")(?<currentValue>[^\\\"]+)(?<hashPrefix>\\\";[\\s\\S]*?hash\\s*=\\s*\\\")[^\\\"]+(?<hashSuffix>\\\";)"
+        "(?<versionPrefix>version\\s*=\\s*\\\")(?<currentValue>[^\\\"]+)(?<hashPrefix>\\\";[\\s\\S]*?hash\\s*=\\s*\\\")[^\\\"]*(?<hashSuffix>\\\";)"
       ],
       "depNameTemplate": "dvejsada/rohlik_api_python",
       "datasourceTemplate": "github-tags",
@@ -68,7 +68,7 @@
         "/(^|/)obsidian-headless/obsidian-headless\\.nix$/"
       ],
       "matchStrings": [
-        "(?<versionPrefix>version\\s*=\\s*\\\")(?<currentValue>[^\\\"]+)(?<hashPrefix>\\\";[\\s\\S]*?hash\\s*=\\s*\\\")[^\\\"]+(?<hashSuffix>\\\";)"
+        "(?<versionPrefix>version\\s*=\\s*\\\")(?<currentValue>[^\\\"]+)(?<hashPrefix>\\\";[\\s\\S]*?hash\\s*=\\s*\\\")[^\\\"]*(?<hashSuffix>\\\";)"
       ],
       "depNameTemplate": "obsidianmd/obsidian-headless",
       "datasourceTemplate": "github-tags",

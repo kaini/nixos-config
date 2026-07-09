@@ -31,7 +31,7 @@
       "depNameTemplate": "sops-nix",
       "packageNameTemplate": "https://github.com/Mic92/sops-nix",
       "datasourceTemplate": "git-refs",
-      "autoReplaceStringTemplate": "https://github.com/Mic92/sops-nix/archive/{{{newDigest}}}.tar.gz\";\\n      sha256 = \"\";"
+      "autoReplaceStringTemplate": "https://github.com/Mic92/sops-nix/archive/{{{newDigest}}}.tar.gz\";\n      sha256 = \"\";"
     },
     {
       "customType": "regex",
@@ -45,7 +45,7 @@
       "depNameTemplate": "dvejsada/rohlik-mcp",
       "datasourceTemplate": "github-tags",
       "extractVersionTemplate": "^v?(?<version>.*)$",
-      "autoReplaceStringTemplate": "version = \"{{{newValue}}}\";\\n  hash = \"\";"
+      "autoReplaceStringTemplate": "version = \"{{{newValue}}}\";\n  hash = \"\";"
     },
     {
       "customType": "regex",
@@ -59,7 +59,7 @@
       "depNameTemplate": "dvejsada/rohlik_api_python",
       "datasourceTemplate": "github-tags",
       "extractVersionTemplate": "^v?(?<version>.*)$",
-      "autoReplaceStringTemplate": "version = \"{{{newValue}}}\";\\n  hash = \"\";"
+      "autoReplaceStringTemplate": "version = \"{{{newValue}}}\";\n  hash = \"\";"
     },
     {
       "customType": "regex",
@@ -73,7 +73,7 @@
       "depNameTemplate": "obsidianmd/obsidian-headless",
       "datasourceTemplate": "github-tags",
       "extractVersionTemplate": "^v?(?<version>.*)$",
-      "autoReplaceStringTemplate": "version = \"{{{newValue}}}\";\\n  hash = \"\";"
+      "autoReplaceStringTemplate": "version = \"{{{newValue}}}\";\n  hash = \"\";"
     }
   ],
   "packageRules": [

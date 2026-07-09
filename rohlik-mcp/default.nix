@@ -7,10 +7,12 @@
 
 let
   rohlik-api = python3Packages.callPackage ../rohlik-api {};
+  version = "0.4.0";
+  hash = "sha256-3G2AqkqPQSdn9e4sJYQrbRUbeosaIzlQ2o4XGrIpQNY=";
 in
 python3Packages.buildPythonApplication (finalAttrs: {
   pname = "rohlik-mcp";
-  version = "0.4.0";
+  inherit version;
   pyproject = true;
   __structuredAttrs = true;
 
@@ -18,7 +20,7 @@ python3Packages.buildPythonApplication (finalAttrs: {
     owner = "dvejsada";
     repo = "rohlik-mcp";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-3G2AqkqPQSdn9e4sJYQrbRUbeosaIzlQ2o4XGrIpQNY=";
+    inherit hash;
   };
 
   build-system = [

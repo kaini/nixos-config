@@ -14,9 +14,13 @@
   nix-update-script,
 }:
 
+let
+  version = "0.2.0";
+  hash = "sha256-sfJQApbYTtrxmzWC4P1B3pyrh0kec9FebVfPM2L3sSQ=";
+in
 buildPythonPackage (finalAttrs: {
   pname = "rohlik-api";
-  version = "0.2.0";
+  inherit version;
   pyproject = true;
   __structuredAttrs = true;
 
@@ -24,7 +28,7 @@ buildPythonPackage (finalAttrs: {
     owner = "dvejsada";
     repo = "rohlik_api_python";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-sfJQApbYTtrxmzWC4P1B3pyrh0kec9FebVfPM2L3sSQ=";
+    inherit hash;
   };
 
   build-system = [

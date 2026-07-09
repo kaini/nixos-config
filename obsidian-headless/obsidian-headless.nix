@@ -18,10 +18,12 @@
 let
   nodeSources = srcOnly nodejs;
   pnpm = pnpm_11;
+  version = "0.0.11";
+  hash = "sha256-zjMdOCuOMMvBZhrXf7nkz8sYAQ0vU+TzyHhlwIbEfHU=";
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "obsidian-headless";
-  version = "0.0.11";
+  inherit version;
 
   strictDeps = true;
   __structuredAttrs = true;
@@ -30,7 +32,7 @@ stdenv.mkDerivation (finalAttrs: {
     owner = "obsidianmd";
     repo = "obsidian-headless";
     tag = finalAttrs.version;
-    hash = "sha256-zjMdOCuOMMvBZhrXf7nkz8sYAQ0vU+TzyHhlwIbEfHU=";
+    inherit hash;
   };
 
   pnpmDeps = fetchPnpmDeps {

@@ -31,6 +31,45 @@
       "depNameTemplate": "sops-nix",
       "packageNameTemplate": "https://github.com/Mic92/sops-nix",
       "datasourceTemplate": "git-refs"
+    },
+    {
+      "customType": "regex",
+      "description": "Update rohlik-mcp",
+      "managerFilePatterns": [
+        "/(^|/)rohlik-mcp/default\\.nix$/"
+      ],
+      "matchStrings": [
+        "version\\s*=\\s*\\\"(?<currentValue>[^\\\"]+)\\\";"
+      ],
+      "depNameTemplate": "dvejsada/rohlik-mcp",
+      "datasourceTemplate": "github-tags",
+      "extractVersionTemplate": "^v?(?<version>.*)$"
+    },
+    {
+      "customType": "regex",
+      "description": "Update rohlik-api",
+      "managerFilePatterns": [
+        "/(^|/)rohlik-api/default\\.nix$/"
+      ],
+      "matchStrings": [
+        "version\\s*=\\s*\\\"(?<currentValue>[^\\\"]+)\\\";"
+      ],
+      "depNameTemplate": "dvejsada/rohlik_api_python",
+      "datasourceTemplate": "github-tags",
+      "extractVersionTemplate": "^v?(?<version>.*)$"
+    },
+    {
+      "customType": "regex",
+      "description": "Update obsidian-headless",
+      "managerFilePatterns": [
+        "/(^|/)obsidian-headless/obsidian-headless\\.nix$/"
+      ],
+      "matchStrings": [
+        "version\\s*=\\s*\\\"(?<currentValue>[^\\\"]+)\\\";"
+      ],
+      "depNameTemplate": "obsidianmd/obsidian-headless",
+      "datasourceTemplate": "github-tags",
+      "extractVersionTemplate": "^v?(?<version>.*)$"
     }
   ],
   "packageRules": [

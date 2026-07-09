@@ -18,8 +18,8 @@
 let
   nodeSources = srcOnly nodejs;
   pnpm = pnpm_11;
-  version = "0.0.11";
-  hash = "sha256-zjMdOCuOMMvBZhrXf7nkz8sYAQ0vU+TzyHhlwIbEfHU=";
+  version = "0.0.12";
+  hash = "";
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "obsidian-headless";

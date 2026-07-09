@@ -25,12 +25,13 @@
         "/(^|/)configuration\\.nix$/"
       ],
       "matchStrings": [
-        "https://github\\.com/Mic92/sops-nix/archive/(?<currentDigest>[a-f0-9]{40})\\.tar\\.gz"
+        "(?<urlPrefix>https://github\\.com/Mic92/sops-nix/archive/)(?<currentDigest>[a-f0-9]{40})(?<hashPrefix>\\.tar\\.gz\\\";[\\s\\S]*?sha256\\s*=\\s*\\\")[^\\\"]+(?<hashSuffix>\\\";)"
       ],
       "currentValueTemplate": "master",
       "depNameTemplate": "sops-nix",
       "packageNameTemplate": "https://github.com/Mic92/sops-nix",
-      "datasourceTemplate": "git-refs"
+      "datasourceTemplate": "git-refs",
+      "autoReplaceStringTemplate": "{{{urlPrefix}}}{{{newDigest}}}{{{hashPrefix}}}{{{hashSuffix}}}"
     },
     {
       "customType": "regex",
@@ -39,11 +40,12 @@
         "/(^|/)rohlik-mcp/default\\.nix$/"
       ],
       "matchStrings": [
-        "version\\s*=\\s*\\\"(?<currentValue>[^\\\"]+)\\\";"
+        "(?<versionPrefix>version\\s*=\\s*\\\")(?<currentValue>[^\\\"]+)(?<hashPrefix>\\\";[\\s\\S]*?hash\\s*=\\s*\\\")[^\\\"]+(?<hashSuffix>\\\";)"
       ],
       "depNameTemplate": "dvejsada/rohlik-mcp",
       "datasourceTemplate": "github-tags",
-      "extractVersionTemplate": "^v?(?<version>.*)$"
+      "extractVersionTemplate": "^v?(?<version>.*)$",
+      "autoReplaceStringTemplate": "{{{versionPrefix}}}{{{newValue}}}{{{hashPrefix}}}{{{hashSuffix}}}"
     },
     {
       "customType": "regex",
@@ -52,11 +54,12 @@
         "/(^|/)rohlik-api/default\\.nix$/"
       ],
       "matchStrings": [
-        "version\\s*=\\s*\\\"(?<currentValue>[^\\\"]+)\\\";"
+        "(?<versionPrefix>version\\s*=\\s*\\\")(?<currentValue>[^\\\"]+)(?<hashPrefix>\\\";[\\s\\S]*?hash\\s*=\\s*\\\")[^\\\"]+(?<hashSuffix>\\\";)"
       ],
       "depNameTemplate": "dvejsada/rohlik_api_python",
       "datasourceTemplate": "github-tags",
-      "extractVersionTemplate": "^v?(?<version>.*)$"
+      "extractVersionTemplate": "^v?(?<version>.*)$",
+      "autoReplaceStringTemplate": "{{{versionPrefix}}}{{{newValue}}}{{{hashPrefix}}}{{{hashSuffix}}}"
     },
     {
       "customType": "regex",
@@ -65,11 +68,12 @@
         "/(^|/)obsidian-headless/obsidian-headless\\.nix$/"
       ],
       "matchStrings": [
-        "version\\s*=\\s*\\\"(?<currentValue>[^\\\"]+)\\\";"
+        "(?<versionPrefix>version\\s*=\\s*\\\")(?<currentValue>[^\\\"]+)(?<hashPrefix>\\\";[\\s\\S]*?hash\\s*=\\s*\\\")[^\\\"]+(?<hashSuffix>\\\";)"
       ],
       "depNameTemplate": "obsidianmd/obsidian-headless",
       "datasourceTemplate": "github-tags",
-      "extractVersionTemplate": "^v?(?<version>.*)$"
+      "extractVersionTemplate": "^v?(?<version>.*)$",
+      "autoReplaceStringTemplate": "{{{versionPrefix}}}{{{newValue}}}{{{hashPrefix}}}{{{hashSuffix}}}"
     }
   ],
   "packageRules": [

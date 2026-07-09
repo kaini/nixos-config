@@ -4,7 +4,7 @@
   imports = [
     "${builtins.fetchTarball {
       url = "https://github.com/Mic92/sops-nix/archive/f1406619a3884cd5c47992a70b8b35c9c0fcb4c9.tar.gz";
-      sha256 = "1f0j45mxb2zv672icpfvi7vnz8l4ccgxlkg79jca8avg00lj9gz3";
+      sha256 = "1iswdpzlyngqlipy14mjmpazx9yybvidpm4sfk74ww9jg3r849b8";
     }}/modules/sops"
 
     ./hardware-configuration.nix

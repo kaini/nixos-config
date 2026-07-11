@@ -7,13 +7,14 @@
       sha256 = "1iswdpzlyngqlipy14mjmpazx9yybvidpm4sfk74ww9jg3r849b8";
     }}/modules/sops"
 
-    ./hardware-configuration.nix
+    ./backup.nix
     ./base.nix
     ./haproxy.nix
-    ./pihole.nix
+    ./hardware-configuration.nix
     ./hass.nix
     ./hermes.nix
     ./obsidian.nix
+    ./pihole.nix
   ];
 
   # This option defines the first version of NixOS you have installed on this particular machine,

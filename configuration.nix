@@ -15,6 +15,7 @@
     ./hermes.nix
     ./obsidian.nix
     ./pihole.nix
+    ./vaultwarden.nix
   ];
 
   # This option defines the first version of NixOS you have installed on this particular machine,

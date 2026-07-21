@@ -8,7 +8,7 @@
 let
   rohlik-api = python3Packages.callPackage ../rohlik-api {};
   version = "0.4.1";
-  hash = "";
+  hash = "sha256-ALoTJ98YoQk7fMaqBMtu4oDuIJ+a6ZPFdGxdVTXTZag=";
 in
 python3Packages.buildPythonApplication (finalAttrs: {
   pname = "rohlik-mcp";

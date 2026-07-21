@@ -8,6 +8,12 @@ This readme file contains some notes for me.
 nix-shell -p sops --run "sops secrets/example.yaml"
 ```
 
+## Test a derivation
+
+```sh
+nix-build --expr '(import <nixpkgs> {}).callPackage ./default.nix {}'
+```
+
 ## Development machine setup
 
 Install nix (the package manager).

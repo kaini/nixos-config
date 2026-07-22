@@ -67,7 +67,7 @@ lib.mkMerge [
     };
 
     virtualisation.oci-containers.containers.hindsight = {
-      image = "ghcr.io/vectorize-io/hindsight:0.8.4@sha256:2c60f233eaba8f51db31adb920a560735aaf6f314e4b63c36c73159742dfa1a7";
+      image = "ghcr.io/vectorize-io/hindsight:0.8.5@sha256:0710076cd1539b4f89537d2e5b0ea1e4d179885bc12809a56cf748c538c8c4fb";
       environment = {
         HOME = "/home/hindsight";
         HINDSIGHT_API_WORKER_ID = "hindsight";

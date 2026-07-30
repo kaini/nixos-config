@@ -18,10 +18,8 @@
 let
   nodeSources = srcOnly nodejs;
   pnpm = pnpm_11;
-  version = "0.0.13";
-  hash = "sha256-gPFIGxB4jf2+JbgUpIf6ENiYKp2bmHKKRKrb2sXSDHY=";
-  # TODO: remove once not needed anymore.
-  lockfilePatch = ./fix-pnpm-lock.patch;
+  version = "0.0.14";
+  hash = "sha256-ue2M9maFyvabGH9qTDOpAJS4OPwCikpAMYm/M/XRGKo=";
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "obsidian-headless";
@@ -29,11 +27,6 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
   __structuredAttrs = true;
-
-  # TODO: remove once not needed anymore.
-  patches = [
-    lockfilePatch
-  ];
 
   src = fetchFromGitHub {
     owner = "obsidianmd";
@@ -51,10 +44,6 @@ stdenv.mkDerivation (finalAttrs: {
     inherit pnpm;
     fetcherVersion = 4;
     hash = "sha256-xkQHk86msMBs7FXqJNoKdSzB0IxyqfFf6rBnPom4YxU=";
-    # TODO: remove once not needed anymore.
-    patches = [
-      lockfilePatch
-    ];
   };
 
   nativeBuildInputs = [

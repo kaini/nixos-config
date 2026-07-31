@@ -126,7 +126,7 @@ lib.mkMerge [
     };
 
     virtualisation.oci-containers.containers.hermes = {
-      image = "nousresearch/hermes-agent:v2026.7.20@sha256:f7b35053268f532f98955195c909f15a230470fbcbdacaa9fdecb95707dad04a";
+      image = "nousresearch/hermes-agent:v2026.7.30@sha256:b869e64d6496d4763d5e4fb675b5f504cb23b0e35ec9b790481a56118602b10f";
       volumes = [
         "/var/lib/hermes:/opt/data"
         "/mnt/hermes-obsidian-vault:/mnt/obsidian-vault"

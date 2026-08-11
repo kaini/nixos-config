@@ -15,6 +15,7 @@
     ./hermes.nix
     ./obsidian.nix
     ./pihole.nix
+    ./syncthing.nix
     ./vaultwarden.nix
   ];
 

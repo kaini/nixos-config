@@ -6,12 +6,6 @@ in
 lib.mkMerge [
   {
     # Rohlik MCP
-    sops.secrets."rohlik-mcp.env" = {
-      sopsFile = ./secrets/rohlik-mcp.env;
-      format = "dotenv";
-      restartUnits = [ "rohlik-mcp.service" ];
-    };
-
     users.groups.rhlmcp = {};
 
     users.users.rhlmcp = {
@@ -36,7 +30,6 @@ lib.mkMerge [
           "ROHLIK_MCP_HOST=10.88.0.1"
           "ROHLIK_MCP_PORT=8787"
         ];
-        EnvironmentFile = config.sops.secrets."rohlik-mcp.env".path;
       };
     };
 

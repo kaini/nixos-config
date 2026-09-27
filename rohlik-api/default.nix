@@ -15,8 +15,8 @@
 }:
 
 let
-  version = "0.2.0";
-  hash = "sha256-sfJQApbYTtrxmzWC4P1B3pyrh0kec9FebVfPM2L3sSQ=";
+  version = "0.3.0";
+  hash = "";
 in
 buildPythonPackage (finalAttrs: {
   pname = "rohlik-api";

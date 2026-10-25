@@ -12,7 +12,6 @@
     ./haproxy.nix
     ./hardware-configuration.nix
     ./hass.nix
-    ./hermes.nix
     ./obsidian.nix
     ./pihole.nix
     ./syncthing.nix

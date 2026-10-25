@@ -35,34 +35,6 @@
     },
     {
       "customType": "regex",
-      "description": "Update rohlik-mcp",
-      "managerFilePatterns": [
-        "/(^|/)rohlik-mcp/default\\.nix$/"
-      ],
-      "matchStrings": [
-        "version\\s*=\\s*\\\"(?<currentValue>[^\\\"]+)\\\";\\s*hash\\s*=\\s*\\\"[^\\\"]*\\\";"
-      ],
-      "depNameTemplate": "dvejsada/rohlik-mcp",
-      "datasourceTemplate": "github-tags",
-      "extractVersionTemplate": "^v?(?<version>.*)$",
-      "autoReplaceStringTemplate": "version = \"{{{newValue}}}\";\n  hash = \"\";"
-    },
-    {
-      "customType": "regex",
-      "description": "Update rohlik-api",
-      "managerFilePatterns": [
-        "/(^|/)rohlik-api/default\\.nix$/"
-      ],
-      "matchStrings": [
-        "version\\s*=\\s*\\\"(?<currentValue>[^\\\"]+)\\\";\\s*hash\\s*=\\s*\\\"[^\\\"]*\\\";"
-      ],
-      "depNameTemplate": "dvejsada/rohlik_api_python",
-      "datasourceTemplate": "github-tags",
-      "extractVersionTemplate": "^v?(?<version>.*)$",
-      "autoReplaceStringTemplate": "version = \"{{{newValue}}}\";\n  hash = \"\";"
-    },
-    {
-      "customType": "regex",
       "description": "Update obsidian-headless",
       "managerFilePatterns": [
         "/(^|/)obsidian-headless/obsidian-headless\\.nix$/"

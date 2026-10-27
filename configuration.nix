@@ -3,8 +3,8 @@
 {
   imports = [
     "${builtins.fetchTarball {
-      url = "https://github.com/Mic92/sops-nix/archive/442449fa7b1fe6c692d0103ac9fc8f9e82931cf3.tar.gz";
-      sha256 = "sha256:1p742s16ms9kj5dskir0cn7gadl4kric1cfjf4hjshgvjmlq4pr9";
+      url = "https://github.com/Mic92/sops-nix/archive/60182817ee048ac94b4c68ea76d5ef2e8aac730d.tar.gz";
+      sha256 = "";
     }}/modules/sops"
 
     ./backup.nix

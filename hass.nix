@@ -25,7 +25,13 @@
     };
   };
 
+  services.esphome = {
+    enable = true;
+    address = "127.0.0.1";
+  };
+
   my.http.hass.port = 8123;
+  my.http.esphome.port = config.services.esphome.port;
 
   networking.firewall = {
     allowedTCPPorts = [ 80 443 18555 ];
